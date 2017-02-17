@@ -29,6 +29,27 @@ var circ = function() {
     drawCirc();
 }
 
+var dvd = function() {
+    var x = 1;
+    var y = 1;
+    window.cancelAnimationFrame( rid );
+
+    var drawDvd = function() {
+	ctx.clearRect(0,0,c.width,c.height);
+	console.log(rid);
+
+	ctx.beginPath();
+	ctx.strokeRect(x,y,x+1,y+1);
+	ctx.stroke();
+
+	x++;
+	y++;
+	rid = window.requestAnimationFrame( drawDvd );
+    };
+
+    drawDvd();
+}
+
 var stopIt = function() {
     window.cancelAnimationFrame(rid);
 }
