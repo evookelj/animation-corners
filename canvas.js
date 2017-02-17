@@ -28,9 +28,12 @@ var circ = function() {
     drawCirc();
 }
 
-var dvd = function() {
-    var x = 1;
-    var y = 1;
+var dvdIt = function() {
+    var x = Math.random()*c.width;
+    var y = Math.random()*c.height;
+    var xvol = 1;
+    var yvol = 1;
+    
     window.cancelAnimationFrame( rid );
 
     var drawDvd = function() {
@@ -38,11 +41,16 @@ var dvd = function() {
 	console.log(rid);
 
 	ctx.beginPath();
-	ctx.strokeRect(x,y,x+1,y+1);
+	ctx.strokeRect(x,y,10,10);
 	ctx.stroke();
 
-	x++;
-	y++;
+	if (x==c.width) { xvol = -1; }
+	if (y==c.height) { yvol = -1; }
+	if (x==0) { xvol = 1; }
+	if (y==0) { yvol = 1; }
+	
+	x+= xvol;
+	y+= yvol;
 	rid = window.requestAnimationFrame( drawDvd );
     };
 
@@ -54,4 +62,5 @@ var stopIt = function() {
 }
 
 circle.addEventListener( 'click', circ );
+dvd.addEventListener( 'click', dvdIt );
 stop.addEventListener( 'click', stopIt );
