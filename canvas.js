@@ -15,8 +15,7 @@ var circ = function() {
 	
 	ctx.beginPath();
 	ctx.arc(c.width/2, c.height/2, x, 0, Math.PI * 2 );
-	ctx.fillStyle = "#f0f8ff";
-	ctx.stroke();
+	ctx.fillStyle = "#ffb6c1";
 	ctx.fill();
 
 	x++;
